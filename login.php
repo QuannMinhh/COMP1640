@@ -12,7 +12,7 @@
             }
             else
             {
-                $error="<div class='text-danger'>Vui lòng nhập tên đăng nhập</div>";
+                $error="<div>Please enter username</div>";
             }
 
             if(!empty(trim($_POST["txtpassword"]))){
@@ -21,7 +21,7 @@
             }
             else
             {
-                $error1="<div class='text-danger'>Vui lòng nhập mật khẩu</div>";    
+                $error1="<div>Please enter password</div>";    
             }
 
             
@@ -33,10 +33,10 @@
                 
                 
                 if($r === false){        
-                    $error="<div class='text-danger'>Người dùng $username không tồn tại.</div>";    
+                    $error="<div>User $username does not exist</div>";    
                 }
                 else {
-                    if($password === $r['Password'])
+                    if($password == $r['Password'])
                     {
                         $role_level=$r['Role'];
                         $_SESSION['email']=$r['Email'];
@@ -65,7 +65,7 @@
                         }
                     }
                     else {
-                        $error="<div class='text-danger'><center>Mật khẩu không đúng</center></div>";
+                        $error2="<div class='text-danger'>Incorrect password</div>";
                     }
                 }
             }
@@ -83,7 +83,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="login.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-    <title>Loginn Page</title>
+    <title>Login Page</title>
 </head>
 <body>
     <div class="wrapper">
@@ -92,21 +92,30 @@
             <div class="input-box">
                 <input type="text" placeholder="Username" id="txtusername" name="txtusername" >
                 <i class='bx bxs-user'></i>
+                <div style="margin-left: 20px;">
                 <?php if(isset($error)){
                     echo $error;                   
                 }?>
+            
+                </div>
             </div>
 
-            <div class="input-box">
+            <div class="input-box" style="margin-top: 10px;">
                 <input type="password" id="txtpassword" placeholder="Password" name="txtpassword" >
                 <i class='bx bxs-lock-alt'></i>
+                <div style="margin-left: 20px;">
                 <?php
                 if(isset($error1)){
                     echo $error1;                   
                 }?>
+                <?php 
+                    if($password != $r['Password'])
+                        echo $error2;
+                ?>
+            </div>
             </div>
 
-            <div class="remember-forgot">
+            <div class="remember-forgot" style="margin-top: 30px">
                 <label><input type="checkbox">Remember me</label>
                 <a href="#">Forgot password?</a>
             </div>
