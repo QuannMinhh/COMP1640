@@ -5,7 +5,7 @@ include 'db.php';
 if($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     if (isset($_POST['UserID'])) {
-        // Lấy UserID từ dữ liệu gửi đi từ form
+   
        echo "ton tai";
     }
     else{
