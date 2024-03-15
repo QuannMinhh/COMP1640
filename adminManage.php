@@ -301,7 +301,7 @@
                                 echo "<td>" . $row['FacultyID'] . "</td>";
                                 echo "<td><button type='button' class='btn btn-primary'>Detail</button></td>";
                                 echo "<td><button type='button' class='btn btn-success'>Edit</button></td>";
-                                echo "<td><button type='button' class='btn btn-danger btn-delete' data-user-id='" . $row['UserID'] . "'>Delete</button></td>";
+                                echo '<td><a href="deleteUser.php?userid=' . $row['UserID'] . '" class="btn btn-danger">Delete</a></td>';
                                 echo "</tr>";
                         }                   
                     } else {
