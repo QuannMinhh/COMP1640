@@ -16,18 +16,26 @@ include 'db.php';
     $faculty = $_POST['faculty'];
     $emailadd = filter_var($_POST['email'], FILTER_SANITIZE_EMAIL);
 
-  if(filter_var($emailadd, FILTER_VALIDATE_EMAIL))
+  if(!filter_var($emailadd, FILTER_VALIDATE_EMAIL))
   {
-        $query = $conn->prepare("Select * from users Where Email = :email");
+    echo"invalid email";
+        
+  }
+  else {
+    $query = $conn->prepare("Select * from users Where Email = :email");
         $query->bindParam(':email', $email);
         $query->execute();
         $result=$query->fetch();
         if($result != false)
         {
-            echo "invalid email";
+           echo  " email da ton tai";
         }
   }
-  else{
+  // else if(!preg_match("^0/d[9]{0,10}",$phone))
+  // {
+  //   echo "invalid phone number";
+  // }
+  
       $sql = "INSERT INTO users (Username, Password, Email, PhoneNumber, DOB, Gender,Address,Role,FacultyID) 
       VALUES (:username, :password, :email, :phone, :DOB, :gender,:address,:role,:faculty)";
       $query = $conn->prepare($sql);     
@@ -42,7 +50,7 @@ include 'db.php';
       $query->bindParam(':phone', $phone);
       $result = $query->execute();
   }
-      }
+      
   
 ?>
 
