@@ -286,15 +286,28 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                    <td>Admin</td>
-                    <td>admin@gmail.com</td>
-                    <td>Admin</td>
-                    <td>1</td>
-                    <td><button type="button" class="btn btn-primary">Detail</button></td>
-                    <td><button type="button" class="btn btn-success">Edit</button></td>
-                    <td><button type="button" class="btn btn-danger">Delete</button></td>
-                    </tr>
+                    <?php
+                        include 'db.php';
+
+                        $query = "SELECT * FROM users";
+                        $result = $conn->query($query);
+
+                        if ($result->rowCount() > 0) {
+                            while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
+                                echo "<tr>";
+                                echo "<td>" . $row['Username'] . "</td>";
+                                echo "<td>" . $row['Email'] . "</td>";
+                                echo "<td>" . $row['Role'] . "</td>";
+                                echo "<td>" . $row['FacultyID'] . "</td>";
+                                echo "<td><button type='button' class='btn btn-primary'>Detail</button></td>";
+                                echo "<td><button type='button' class='btn btn-success'>Edit</button></td>";
+                                echo "<td><button type='button' class='btn btn-danger btn-delete' data-user-id='" . $row['UserID'] . "'>Delete</button></td>";
+                                echo "</tr>";
+                        }                   
+                    } else {
+                            echo "<tr><td colspan='7'>No users found</td></tr>";
+                        }
+                    ?>
                     
                 </tbody>
                 </table>

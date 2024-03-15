@@ -1,9 +1,6 @@
 <?php 
 include 'db.php';
 
-
-
-
   if (isset($_POST['create'])) {
     $username = $_POST['username'];
     $password = $_POST['password'];
@@ -16,7 +13,7 @@ include 'db.php';
     $faculty = $_POST['faculty'];
     $emailadd = filter_var($_POST['email'], FILTER_SANITIZE_EMAIL);
 
-  if(filter_var($emailadd, FILTER_VALIDATE_EMAIL))
+  if(!filter_var($emailadd, FILTER_VALIDATE_EMAIL))
   {
         $query = $conn->prepare("Select * from users Where Email = :email");
         $query->bindParam(':email', $email);
@@ -43,7 +40,7 @@ include 'db.php';
       $result = $query->execute();
   }
       }
-  
+
 ?>
 
 
