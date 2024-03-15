@@ -1,214 +1,313 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sidebar With Bootstrap</title>
-    <link href="https://cdn.lineicons.com/4.0/lineicons.css" rel="stylesheet" />
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <title>Admin Page</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
     <link rel="stylesheet" href="css/adminManage.css">
 </head>
+    <style>
+    .main--content {
+        position: relative;
+        background: #ebe9e9;
+        width: 100%;
+        padding: 1rem;
+    }
+    .header--wrapper img{
+        width: 50px;
+        height: 50px;
+        cursor: pointer;
+        border-radius: 50%;
+    }
+    .header--wrapper {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        background: #fff;
+        border-radius: 10px;
+        padding: 10px 2rem;
+        margin-bottom: 1rem;
+    }
+    .header--title{
+        color: rgba(113, 99, 186, 255);
+    }
 
+    .user--info {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+    }
 
+    .search--box {
+        background: rgb(237,237,237);
+        border-radius: 15px;
+        color: rgba(113, 99, 186, 255);
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        padding: 4px 12px;
+    }
 
+    .search--box input {
+        background: transparent;
+        padding: 10px;
+    }
+
+    .search--box i {
+        font-size: 1.2rem;
+        cursor: pointer;
+        transition: all 0.5s ease-out;
+    }
+    .search--box i:hover {
+        transform: scale(1.2);
+    }
+
+    .card--container {
+        background: #fff;
+        padding: 2rem;
+        border-radius: 10px;
+    }
+
+    .card--wrapper {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+    }
+
+    .main--title {
+        color: rgba(113, 99, 186, 255);
+        padding-bottom: 10px;
+        font-size: 20px;
+    }
+
+    .payment--card {
+        background: rgb(229,223,223);
+        border-radius: 10px;
+        padding: 1.2rem;
+        width: 290px;
+        height: 150px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        transition: all 0.5s ease-in-out;
+    }
+    .payment--card:hover {
+        transform: translateY(-5px);
+    }
+
+    .card--header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 20px;
+    }
+
+    .amount {
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .title {
+        font-size: 15px;
+        font-weight: 600;
+    }
+
+    .amount--value {
+        font-size: 24px;
+        font-family: 'Courier New', Courier, monospace;
+        font-weight: 700;
+    }
+
+    .fa-regular  {
+        color: #fff;
+        padding: 1rem;
+        height: 60px;
+        width: 60px;
+        text-align: center;
+        border-radius: 50%;
+        font-size: 1.5rem;
+        background: green;
+    }
+
+    .card-detail {
+        font-size: 18px;
+        color: #777777;
+        letter-spacing: 2px;
+        font-family: 'Courier New', Courier, monospace;
+    }
+
+    /* color css*/
+    .light-red {
+        background: rgb(251, 233, 233);
+    }
+    .light-purple {
+        background: rgb(254, 226, 254);
+    }
+    .light-green {
+        background: rgb(235, 254, 235);
+    }
+    .light-blue {
+        background: rgb(236, 236, 254);
+    }
+    .dark-red {
+        background: red;
+    }
+    .dark-purple {
+        background: purple;
+    }
+    .dark-green {
+        background: green;
+    }
+    .dark-blue {
+        background: blue;
+    }
+    .tabular--wrapper {
+        background: #fff;
+        margin-top: 1rem;
+        border-radius: 10px;
+        padding: 2rem;
+    }
+    </style>
 <body>
-    <div class="wrapper">
-        <aside id="sidebar">
-            <div class="d-flex">
-                <button class="toggle-btn" type="button">
-                    <i class="lni lni-grid-alt"></i>
-                </button>
-                <div class="sidebar-logo">
-                    <a href="#">Admin</a>
-                </div>
-            </div>
-            <ul class="sidebar-nav">
-                <li class="sidebar-item">
-                    <a href="#" class="sidebar-link">
-                        <i class="lni lni-user"></i>
-                        <span>Profile</span>
-                    </a>
-                </li>
-                <li class="sidebar-item">
-                    <a href="#" class="sidebar-link">
-                        <i class="lni lni-agenda"></i>
-                        <span>Document</span>
-                    </a>
-                </li>
-                <!-- <li class="sidebar-item">
-                    <a href="#" class="sidebar-link collapsed has-dropdown" data-bs-toggle="collapse"
-                        data-bs-target="#auth" aria-expanded="false" aria-controls="auth">
-                        <i class="lni lni-protection"></i>
-                        <span>Auth</span>
-                    </a>
-                    <ul id="auth" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
-                        <li class="sidebar-item">
-                            <a href="#" class="sidebar-link">Login</a>
-                        </li>
-                        <li class="sidebar-item">
-                            <a href="#" class="sidebar-link">Register</a>
-                        </li>
-                    </ul>
-                </li> -->
-                <li class="sidebar-item">
-                    <!-- <a href="#" class="sidebar-link collapsed has-dropdown" data-bs-toggle="collapse"
-                        data-bs-target="#multi" aria-expanded="false" aria-controls="multi">
-                        <i class="lni lni-layout"></i>
-                        <span>Multi Level</span>
-                    </a> -->
-                    <!-- <ul id="multi" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
-                        <li class="sidebar-item">
-                            <a href="#" class="sidebar-link collapsed" data-bs-toggle="collapse"
-                                data-bs-target="#multi-two" aria-expanded="false" aria-controls="multi-two">
-                                Two Links
-                            </a>
-                            <ul id="multi-two" class="sidebar-dropdown list-unstyled collapse">
-                                <li class="sidebar-item">
-                                    <a href="#" class="sidebar-link">Link 1</a>
-                                </li>
-                                <li class="sidebar-item">
-                                    <a href="#" class="sidebar-link">Link 2</a>
-                                </li>
-                            </ul>
-                        </li>
-                    </ul> -->
-                </li>
-                <li class="sidebar-item">
-                    <a href="#" class="sidebar-link">
-                        <i class="lni lni-popup"></i>
-                        <span>Notification</span>
-                    </a>
-                </li>
-                <li class="sidebar-item">
-                    <a href="#" class="sidebar-link">
-                        <i class="lni lni-cog"></i>
-                        <span>Setting</span>
-                    </a>
-                </li>
-            </ul>
-            <div class="sidebar-footer">
-                <a href="#" class="sidebar-link">
-                    <i class="lni lni-exit"></i>
-                    <span>Logout</span>
+    <div class="sidebar">
+        <div class="logo"></div>
+        <ul class="menu">
+            <li class="active">
+                <a href="adminManage.php">
+                    <i class="fa-solid fa-house"></i>
+                    <span>Home</span>
                 </a>
-            </div>
-        </aside>
-        <div class="main">
-            <nav class="navbar navbar-expand px-4 py-3">
-                <form action="#" class="d-none d-sm-inline-block">
-
-                </form>
-                <div class="navbar-collapse collapse">
-                    <ul class="navbar-nav ms-auto">
-                        <li class="nav-item dropdown">
-                            <a href="#" data-bs-toggle="dropdown" class="nav-icon pe-md-0">
-                                <img src="https://cdn.haitrieu.com/wp-content/uploads/2022/12/Icon-Truong-Dai-hoc-Greenwich-Viet-Nam.png" class="avatar img-fluid" alt="">
-                            </a>
-                            <div class="dropdown-menu dropdown-menu-end rounded">
-
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-            </nav>
-            <main class="content px-3 py-4">
-                <div class="container-fluid">
-                    <div class="mb-3">
-                        <div class="d-flex justify-content-between align-items-center">
-                            <h3 class="fw-bold fs-4 mb-3">Admin Dashboard</h3>
-                            <form class="d-flex">
-                                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                                <button  type="submit">Search</button>
-                            </form>
-                        </div>
-                        <div class="row">
-                            <div class="col-12 col-md-4">
-                                <div class="card border-0">
-                                    <div class="card-body py-4 d-flex flex-column align-items-start">
-                                        <div class="mb-0 d-flex align-items-center">
-                                            <span class="mb-2 fw-bold me-2">Number of accounts: </span>
-                                            <span class="mb-2 fw-bold">  10</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                        <div class="row">
-                            <div class="col-12">
-                                <table class="table table-striped">
-                                    <thead>
-                                        <tr class="highlight">
-                                            <th scope="col">#</th>
-                                            <th scope="col">User Name</th>
-                                            <th scope="col">Email</th>
-                                            <th scope="col">Phone</th>
-                                            <th scope="col">DOB</th>
-                                            <th scope="col">Gender</th>
-                                            <th scope="col">Address</th>
-                                            <th scope="col">Role</th>
-                                            <th scope="col">Falcuty</th>
-                                            <th scope="col">Action</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <th scope="row">1</th>
-                                            <td>Quan</td>
-                                            <td>Quan@gmail.com</td>
-                                            <td>0123456789</td>
-                                            <td>12/12/2002</td>
-                                            <td>Male</td>
-                                            <td>Ha Noi</td>
-                                            <td>Marketing</td>
-                                            <td>IT</td>
-                                            <td>
-                                                <button>Update</button>
-                                                <button>Delete</button>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </main>
-            <footer class="footer">
-                <!-- <div class="container-fluid">
-                    <div class="row text-body-secondary">
-                        <div class="col-6 text-end text-body-secondary d-none d-md-block">
-                            <ul class="list-inline mb-0">
-                                <li class="list-inline-item">
-                                    <a class="text-body-secondary" href="#">Contact</a>
-                                </li>
-                                <li class="list-inline-item">
-                                    <a class="text-body-secondary" href="#">About Us</a>
-                                </li>
-                                <li class="list-inline-item">
-                                    <a class="text-body-secondary" href="#">Terms & Conditions</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div> -->
-            </footer>
-        </div>
+            </li>
+            <li>
+                <a href="#">
+                    <i class="fa-solid fa-user"></i>
+                    <span>Profile</span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <i class="fa-solid fa-chart-column"></i>
+                    <span>Statistics</span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <i class="fa-solid fa-circle-question"></i>
+                    <span>FAQ</span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <i class="fa-solid fa-gear"></i>
+                    <span>Settings</span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <i class="fa-solid fa-users"></i>
+                    <span>Account</span>
+                </a>
+            </li>
+            <li class="logout">
+                <a href="#">
+                    <i class="fa-solid fa-right-from-bracket"></i>
+                    <span>Log Out</span>
+                </a>
+            </li>
+        </ul>
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
-        crossorigin="anonymous"></script>
-    <script>
-    const hamBurger = document.querySelector(".toggle-btn");
+    <div class="main--content">
+        <div class="header--wrapper">
+            <div class="header--title">
+                <span style="font-weight: bold">University Of Greenwich</span>
+                <h1>ADMIN PAGE</h1>
+            </div>
+            <div class="user--info">
+                <div class="search--box">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <input type="text" placeholder="Search">
+                </div>
+                <img src="../image/image.png" alt="">
+            </div>
+        </div>
 
-    hamBurger.addEventListener("click", function () {
-    document.querySelector("#sidebar").classList.toggle("expand");
-    });
+        <div class="card--container">
+            <h3 class="main--title">Today's data</h3>
+            <div class="card--wrapper">
+                <div class="payment--card light-red">
+                    <div class="card--header">
+                        <div class="amount">
+                            <span class="title">Total users</span>
+                            <span class="amount--value">500</span>
+                        </div>
+                        <i class="fa-regular fa-user dark-red"></i>
+                    </div>
+                    <span class="card-detail">**** **** **** ***</span>
+                </div>
+                <div class="payment--card light-blue">
+                    <div class="card--header">
+                        <div class="amount">
+                            <span class="title">Total contributions</span>
+                            <span class="amount--value">500</span>
+                        </div>
+                        <i class="fa-regular fa-bookmark dark-blue"></i>
+                    </div>
+                    <span class="card-detail">**** **** **** ***</span>
+                </div>
+                <div class="payment--card light-green">
+                    <div class="card--header">
+                        <div class="amount">
+                            <span class="title">Total comments</span>
+                            <span class="amount--value">500</span>
+                        </div>
+                        <i class="fa-regular fa-comments"></i>
+                    </div>
+                    <span class="card-detail">**** **** **** ***</span>
+                </div>
+            </div>
+        </div>
 
-    </script>
+        <div class="tabular--wrapper">
+            <div class="d-flex align-items-center justify-content-between">
+            <h3 class="main--title">User Accounts</h3>
+            <a href="adduser.php" type="button" class="btn btn-info">Add new accounts</a>
+            </div>
+            <table class="table table-bordered">
+                <thead class="thead-light">
+                    <tr>
+                    <th>User Name</th>
+                    <th>Email</th>
+                    <th>Role</th>
+                    <th>Faculty ID</th>
+                    <th style="text-align: center;" scope="col" colspan="3">Actions</th>                    
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                    <td>Admin</td>
+                    <td>admin@gmail.com</td>
+                    <td>Admin</td>
+                    <td>1</td>
+                    <td><button type="button" class="btn btn-primary">Detail</button></td>
+                    <td><button type="button" class="btn btn-success">Edit</button></td>
+                    <td><button type="button" class="btn btn-danger">Delete</button></td>
+                    </tr>
+                    
+                </tbody>
+                </table>
+        </div>
+
+    </div>
+
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js" integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+" crossorigin="anonymous"></script>
 </body>
-
+    
 </html>
