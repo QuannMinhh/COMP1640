@@ -1,21 +1,12 @@
 <?php 
 include 'db.php';
-
+session_start();
           
-if($_SERVER['REQUEST_METHOD'] == 'POST') {
 
-    if (isset($_POST['UserID'])) {
-   
-       echo "ton tai";
-    }
-    else{
-      echo "UserID ko ton tai";
-
-    }
- $userid = $_POST['UserID'];
+ $userid = $_SESSION['userid'];
   echo $userid;      
     
-}
+
 var_dump($_POST);
 
 

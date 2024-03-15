@@ -3,7 +3,7 @@
     include_once("db.php");
     if(isset($_POST['submit']))
     {
-        $username = $password = "";
+        $username = "";$password = "";
         $error = "";
 
         if($_SERVER["REQUEST_METHOD"] == "POST"){
@@ -27,7 +27,7 @@
             
 
             if(empty($error)){
-                $stmt = $conn->prepare("SELECT * FROM Users WHERE Username = ?");     
+                $stmt = $conn->prepare("SELECT * FROM users WHERE Username = ?");     
                 $stmt->execute(array($username));
                 $r=$stmt->fetch(PDO::FETCH_ASSOC);
                 

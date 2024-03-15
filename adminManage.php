@@ -1,3 +1,15 @@
+
+<?php 
+session_start();
+if($_SESSION['role_level'] != 'Admin'){
+    echo "Unauthorized user. Access denied.";      
+    header("location:login.php");
+  } 
+  else {echo"da dang nhap";
+  echo  $_SESSION['userid'];
+}
+
+  ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -182,7 +194,7 @@
                 </a>
             </li>
             <li>
-                <a href="#">
+                <a href="adminProfile.php">
                     <i class="fa-solid fa-user"></i>
                     <span>Profile</span>
                 </a>
@@ -212,7 +224,7 @@
                 </a>
             </li>
             <li class="logout">
-                <a href="#">
+                <a href="logout.php">
                     <i class="fa-solid fa-right-from-bracket"></i>
                     <span>Log Out</span>
                 </a>
@@ -275,6 +287,7 @@
             <h3 class="main--title">User Accounts</h3>
             <a href="adduser.php" type="button" class="btn btn-info">Add new accounts</a>
             </div>
+           
             <table class="table table-bordered">
                 <thead class="thead-light">
                     <tr>
@@ -299,8 +312,13 @@
                                 echo "<td>" . $row['Email'] . "</td>";
                                 echo "<td>" . $row['Role'] . "</td>";
                                 echo "<td>" . $row['FacultyID'] . "</td>";
-                                echo "<td><button type='button' class='btn btn-primary'>Detail</button></td>";
-                                echo "<td><button type='button' class='btn btn-success'>Edit</button></td>";
+                                echo "<td><button type='button' name='UserID' value=''class='btn btn-primary'>Detail</button></td>";
+                                ?>
+                                <form method="POST" action="edituser2.php">
+                                <td><button type='submit' name='UserID' value=''class='btn btn-primary'>Edit</button></td>
+                                <input type="hidden" value="<?php echo $row['UserID']?>"name = "UserID" >
+                                </form>
+                                <?php
                                 echo '<td><a href="deleteUser.php?userid=' . $row['UserID'] . '" class="btn btn-danger">Delete</a></td>';
                                 echo "</tr>";
                         }                   
@@ -311,6 +329,7 @@
                     
                 </tbody>
                 </table>
+          
         </div>
 
     </div>
