@@ -266,9 +266,7 @@ include 'db.php';
         <div class="header--wrapper">
             <div class="header--title">
                 <span style="font-weight: bold">University Of Greenwich</span>
-                <div class="form-group">                                                                   
-              <button type="submit" name="create" class="btn btn-success btn-lg btn-block">Click to add new user</button>                   
-            </div>
+                <h1>ADD NEW ACCOUNTS</h1>
             </div>
             <div class="user--info">
                 <div class="search--box">
