@@ -266,7 +266,9 @@ include 'db.php';
         <div class="header--wrapper">
             <div class="header--title">
                 <span style="font-weight: bold">University Of Greenwich</span>
-                <h1>ADD NEW ACCOUNTS</h1>
+                <div class="form-group">                                                                   
+              <button type="submit" name="create" class="btn btn-success btn-lg btn-block">Click to add new user</button>                   
+            </div>
             </div>
             <div class="user--info">
                 <div class="search--box">
@@ -279,6 +281,7 @@ include 'db.php';
 
         <div class="tabular--wrapper">
         <form method="POST" action='adduser.php'>
+        
 <div class="form-group">
     <label for="username">User name</label>
     <input type="text" name="username"class="form-control" id="username"  placeholder="Enter name">
@@ -313,8 +316,9 @@ include 'db.php';
     <select class="form-control" id="role" name="role">
         <option>Select a role</option>
         <option value="admin">Admin</option>
-        <option value="user">User</option>
+        <option value="marketingCordinator">Marketing Cordinator</option>
         <option value="guest">Guest</option>
+        <option value="marketingManager">Marketing Manager</option>
     </select>
   </div>
   <div class="form-group">
@@ -334,15 +338,9 @@ include 'db.php';
        <?php endforeach ?>  
 </select>
   </div>
-  <div class="form-group">                                
-                                    
-    <button type="submit" name="create" class="btn btn-success btn-md mb-3">Add</button>
-                                    
-                                    
+  <div class="form-group">                                                                   
+    <button type="submit" name="create" class="btn btn-success">Add</button>                   
 </div>
-
-  <
- 
                                                 
 </form>
         </div>
